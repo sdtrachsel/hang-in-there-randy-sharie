@@ -12,7 +12,7 @@
 * Press enter to make a local copy clone and then you're done.
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+[External Link https://giphy.com/gifs/5JnbmFMOwjYX2Qcecd]
 
 ### Context:
 * This project took approximately 15 hours to complete. This includes time spent researching, coding individually and pairing, as well as documentation. We're currently in week 2 of a 6 month intensive program through Turing School Software and Design. 
