@@ -2,7 +2,7 @@
 var img = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-var savedGrid = document.querySelector('.saved-posters-grid')
+var savedGrid = document.querySelector('.saved-posters-grid');
 
 // Views
 var mainPosterView = document.querySelector('.main-poster');
@@ -18,7 +18,7 @@ var showMainButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 var showMyPosterButton = document.querySelector('.make-poster');
 
-//Inputs
+// Form Inputs
 var formImage = document.querySelector('#poster-image-url');
 var formTitle = document.querySelector('#poster-title');
 var formQuote = document.querySelector('#poster-quote');
@@ -122,10 +122,6 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var formImage = document.querySelector('#poster-image-url');
-var formTitle = document.querySelector('#poster-title');
-var formQuote = document.querySelector('#poster-quote');
-
 var savedPosters = [];
 var currentPoster;
 
@@ -138,7 +134,7 @@ showMainButton.addEventListener('click', viewMainPage);
 backToMainButton.addEventListener('click', viewMainPage);
 showMyPosterButton.addEventListener('click', showMyPoster);
 savePosterButton.addEventListener('click', saveMainPoster);
-savedGrid.addEventListener('dblclick', deletePoster)
+savedGrid.addEventListener('dblclick', deletePoster);
 
 
 // functions and event handlers go here 👇
@@ -149,9 +145,8 @@ function getRandomIndex(array) {
 }
 
 function deletePoster() {
-  var dblClickId = Number(event.target.id)
   for (i = 0; i < savedPosters.length; i++) {
-    if (savedPosters[i].id === dblClickId) {
+    if (savedPosters[i].id === Number(event.target.id)) {
       savedPosters.splice(i, 1)
     }
   }
@@ -179,31 +174,23 @@ function saveMainPoster() {
 function showMyPoster() {
   event.preventDefault()
   currentPoster = new Poster(formImage.value, formTitle.value, formQuote.value)
-  if (!images.includes(currentPoster.imageURL)) {
     images.push(currentPoster.imageURL)
-  }
-  if (!quotes.includes(currentPoster.quote)) {
     quotes.push(currentPoster.quote)
-  }
-  if (!titles.includes(currentPoster.title)) {
     titles.push(currentPoster.title)
-  }
+  
   viewMainPage()
   title.innerText = currentPoster.title;
   img.src = currentPoster.imageURL;
   quote.innerText = currentPoster.quote;
 }
 
-// Button Functions
-
 function createRandomPoster() {
-  console.log(event.target)
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(images)]);
-
   title.innerText = currentPoster.title;
   img.src = currentPoster.imageURL;
   quote.innerText = currentPoster.quote;
 }
+
 function viewMakeYourOwnPoster() {
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
@@ -215,7 +202,6 @@ function viewSavedPosters() {
   mainPosterView.classList.add('hidden');
   savedPosterView.classList.remove('hidden');
   populateSavedGrid()
-
 }
 
 function viewMainPage() {
@@ -223,12 +209,3 @@ function viewMainPage() {
   mainPosterView.classList.remove('hidden');
   savedPosterView.classList.add('hidden');
 }
-
-
-
-
-
-
-
-
-
