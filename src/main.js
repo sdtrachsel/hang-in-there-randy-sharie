@@ -145,8 +145,11 @@ function getRandomIndex(array) {
 }
 
 function deletePoster() {
+  var clickedID = event.target.id;
+  var clickedPosterId = clickedID.slice(0, clickedID.length-1);
+  
   for (i = 0; i < savedPosters.length; i++) {
-    if (savedPosters[i].id === Number(event.target.id)) {
+    if (savedPosters[i].id === Number(clickedPosterId)) {
       savedPosters.splice(i, 1)
     }
   }
@@ -156,11 +159,11 @@ function deletePoster() {
 function populateSavedGrid() {
   savedGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
-    savedGrid.innerHTML +=
-      `<article class='mini-poster' id='${savedPosters[i].id}'>
-      <img id='${savedPosters[i].id}' src=${savedPosters[i].imageURL}>
-      <h2 id='${savedPosters[i].id}'> ${savedPosters[i].title} </h2>
-      <h4 id='${savedPosters[i].id}'> ${savedPosters[i].quote} </h4>
+      savedGrid.innerHTML +=
+      `<article class='mini-poster' id='${savedPosters[i].id+'b'}'>
+      <img id='${savedPosters[i].id + 'i'}' src=${savedPosters[i].imageURL}>
+      <h2 id='${savedPosters[i].id + 't'}'> ${savedPosters[i].title} </h2>
+      <h4 id='${savedPosters[i].id + 'q'}'> ${savedPosters[i].quote} </h4>
       </article>`
   }
 }
